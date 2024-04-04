@@ -8,19 +8,26 @@ type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="border bg-white">
+    <div className="border rounded-lg bg-white">
+      <Image
+        width={400}
+        height={500}
+        src={`/products/${product.image}.jpg`}
+        alt={`Imagen producto ${product.name}`}
+        quality={20}
+        className="rounded-t-lg"
+      />
       <div className="p-5">
         <h3 className="text-2xl font-bold">{product.name}</h3>
         <p className="mt-5 font-black text-4xl text-amber-500">
           {formatCurrency(product.price)}
         </p>
-        <div className="w-52 h-52 relative">
-          <Image
-            fill
-            src={`/products/${product.image}.jpg`}
-            alt="Imagen Producto"
-          />
-        </div>
+        <button
+          type="button"
+          className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer rounded-md"
+        >
+          agregar
+        </button>
       </div>
     </div>
   );
