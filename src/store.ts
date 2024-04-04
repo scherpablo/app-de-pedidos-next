@@ -5,12 +5,17 @@ import { Product } from "@prisma/client";
 interface Store {
   order: OrderItem[];
   addToOrder: (product: Product) => void;
+  increaseQuantity: (id: Product['id']) => void;
+  decreaseQuantity: (id: Product['id']) => void;
 }
 
 const useStore = create<Store>((set, get) => ({
   order: [],
+
   addToOrder: (product) => {
+
     const { categoryId, image, ...data } = product;
+
     let order: OrderItem[] = [];
 
     if (get().order.find((item) => item.id === data.id)) {
@@ -38,6 +43,26 @@ const useStore = create<Store>((set, get) => ({
       order,
     }));
   },
+  
+  increaseQuantity: (id) => {
+    set((state) => ({
+        order: state.order.map(item => item.id === id ? {
+            ...item,
+            quantity: item.quantity + 1,
+            subtotal: item.price * (item.quantity + 1),
+        } : item)
+    }))
+  },
+
+  decreaseQuantity: (id) => {
+    set((state) => ({
+        order: state.order.map(item => item.id === id ? {
+            ...item,
+            quantity: Math.max(item.quantity - 1, 1),
+            subtotal: item.price * Math.max(item.quantity - 1, 1),
+        } : item)
+    }))
+  }
 }));
 
 export default useStore;

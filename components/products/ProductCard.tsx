@@ -8,6 +8,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  
   return (
     <div className="border rounded-lg bg-white">
       <Image
