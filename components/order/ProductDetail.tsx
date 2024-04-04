@@ -7,7 +7,7 @@ type ProductDetailProps = {
 };
 
 const ProductDetail = ({ item }: ProductDetailProps) => {
-  console.log(item);
+    
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
       <div className="space-y-4">

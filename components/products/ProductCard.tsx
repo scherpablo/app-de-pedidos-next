@@ -16,10 +16,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
         src={`/products/${product.image}.jpg`}
         alt={`Imagen producto ${product.name}`}
         quality={20}
-        className="rounded-t-lg"
+        className="rounded-t-lg md:w-[100%] md:h-auto"
       />
       <div className="p-5">
-        <h3 className="text-2xl font-bold h-14">{product.name}</h3>
+        <h3 className="text-2xl font-bold">{product.name}</h3>
         <p className="mt-5 font-black text-4xl text-amber-500">
           {formatCurrency(product.price)}
         </p>

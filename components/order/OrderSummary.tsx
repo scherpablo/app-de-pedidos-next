@@ -14,7 +14,7 @@ const OrderSummary = () => {
         <div className="mt-5">
           {order.map(item => (
             <ProductDetail 
-            key={order.id}
+            key={item.id}
             item={item}
             />
           ))}
