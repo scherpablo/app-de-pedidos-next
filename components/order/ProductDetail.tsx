@@ -10,10 +10,10 @@ type ProductDetailProps = {
 const ProductDetail = ({ item }: ProductDetailProps) => {
   const increaseQuantity = useStore((state) => state.increaseQuantity);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
-  const deleteItem = useStore((state) => state.deleteItem); 
+  const deleteItem = useStore((state) => state.deleteItem);
 
   return (
-    <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
+    <div className="shadow-xl space-y-1 p-4 bg-white  border-t border-gray-200 rounded-lg my-2">
       <div className="space-y-4">
         <div className="flex justify-between items-start">
           <p className="text-xl font-bold">{item.name} </p>

@@ -28,7 +28,7 @@ const OrderSummary = () => {
         </div>
       )}
 
-      <p className="text-2xl font-bold mt-10 text-center">
+      <p className="text-2xl font-bold mt-10 text-center bg-amber-400 p-3 rounded-lg">
         Total a pagar:{" "}
         <span className="text-indigo-700 font-black">
           {formatCurrency(totalOrder)}
