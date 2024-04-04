@@ -17,7 +17,7 @@ const OrderSummary = () => {
       <h1 className="text-4xl text-center font-black">Mi Pedido</h1>
 
       {order.length === 0 ? (
-        <p className="text-2xl font-bold text-center mt-5">
+        <p className="text-2xl font-semibold text-center mt-5">
           El carrito esata vacio
         </p>
       ) : (
