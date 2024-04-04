@@ -10,7 +10,7 @@ const OrderSidebar = async () => {
 
   return (
     <aside className="md:w-72 md:h-screen bg-white">
-      <nav className="mt-10">
+      <nav className="mt-10 cursor-pointer">
         {categories.map((category) => (
           <CategoryIcon 
           key={category.id}
