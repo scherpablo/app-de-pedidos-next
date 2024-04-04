@@ -8,9 +8,8 @@ type ProductDetailProps = {
 };
 
 const ProductDetail = ({ item }: ProductDetailProps) => {
-const increaseQuantity = useStore((state) => state.increaseQuantity)
-const decreaseQuantity = useStore((state) => state.decreaseQuantity)    
-
+  const increaseQuantity = useStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useStore((state) => state.decreaseQuantity);
 
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
@@ -22,9 +21,16 @@ const decreaseQuantity = useStore((state) => state.decreaseQuantity)
             <XCircleIcon className="text-red-600 h-8 w-8" />
           </button>
         </div>
-        <p className="text-2xl text-amber-500 font-black">{formatCurrency(item.price)}</p>
+        <p className="text-2xl text-amber-500 font-black">
+          {formatCurrency(item.price)}
+        </p>
         <div className="flex gap-5 px-10 py-2 bg-gray-100 w-fit rounded-lg">
-          <button type="button" onClick={() => decreaseQuantity(item.id)}>
+          <button
+            type="button"
+            onClick={() => decreaseQuantity(item.id)}
+            disabled={item.quantity === 1}
+            className="disabled:opacity-20"
+          >
             <MinusIcon className="h-6 w-6" />
           </button>
 
