@@ -10,6 +10,7 @@ type ProductDetailProps = {
 const ProductDetail = ({ item }: ProductDetailProps) => {
   const increaseQuantity = useStore((state) => state.increaseQuantity);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
+  const deleteItem = useStore((state) => state.deleteItem); 
 
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
@@ -17,7 +18,7 @@ const ProductDetail = ({ item }: ProductDetailProps) => {
         <div className="flex justify-between items-start">
           <p className="text-xl font-bold">{item.name} </p>
 
-          <button type="button" onClick={() => {}}>
+          <button type="button" onClick={() => deleteItem(item.id)}>
             <XCircleIcon className="text-red-600 h-8 w-8" />
           </button>
         </div>
