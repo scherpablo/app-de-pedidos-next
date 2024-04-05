@@ -3,6 +3,7 @@
 import useStore from "@/src/store";
 import ProductDetail from "./ProductDetail";
 import { useMemo } from "react";
+import { toast } from "react-toastify";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/cerate-order-action";
 import { orderSchema } from "@/src/schema";
@@ -17,11 +18,16 @@ const OrderSummary = () => {
   const handleCreateOrder = (formData: FormData) => {
     const data = {
       name: formData.get("name"),
-      phone: formData.get("phone")
-    }
+      phone: formData.get("phone"),
+    };
 
     const result = orderSchema.safeParse(data);
-    console.log(result)
+    if (!result.success) {
+      result.error.issues.forEach((issue) => {
+        toast.error(issue.message);
+      });
+    }
+    
     return
     createOrder();
   };
