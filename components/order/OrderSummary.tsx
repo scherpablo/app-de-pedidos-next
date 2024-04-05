@@ -5,6 +5,7 @@ import ProductDetail from "./ProductDetail";
 import { useMemo } from "react";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/cerate-order-action";
+import { orderSchema } from "@/src/schema";
 
 const OrderSummary = () => {
   const order = useStore((state) => state.order);
@@ -14,11 +15,14 @@ const OrderSummary = () => {
   );
 
   const handleCreateOrder = (formData: FormData) => {
-    const name = (formData.get('name'))
-    const phone = (formData.get('phone'))
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone")
+    }
 
-    console.log(name)
-    console.log(phone)
+    const result = orderSchema.safeParse(data);
+    console.log(result)
+    return
     createOrder();
   };
 
