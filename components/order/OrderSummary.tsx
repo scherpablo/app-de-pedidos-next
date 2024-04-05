@@ -4,6 +4,7 @@ import useStore from "@/src/store";
 import ProductDetail from "./ProductDetail";
 import { useMemo } from "react";
 import { formatCurrency } from "@/src/utils";
+import { createOrder } from "@/actions/cerate-order-action";
 
 const OrderSummary = () => {
   const order = useStore((state) => state.order);
@@ -12,13 +13,22 @@ const OrderSummary = () => {
     [order]
   );
 
+  const handleCreateOrder = (formData: FormData) => {
+    const name = (formData.get('name'))
+    const phone = (formData.get('phone'))
+
+    console.log(name)
+    console.log(phone)
+    createOrder();
+  };
+
   return (
     <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
       <h1 className="text-4xl text-center font-black">Mi Pedido</h1>
 
       {order.length === 0 ? (
         <p className="text-2xl font-semibold text-center mt-5">
-          El carrito esata vacio
+          El pedido esata vacio
         </p>
       ) : (
         <div className="mt-5">
@@ -28,12 +38,35 @@ const OrderSummary = () => {
         </div>
       )}
 
-      <p className="text-2xl font-bold mt-10 text-center bg-amber-400 p-3 rounded-lg">
+      <p className="text-2xl font-bold mt-10 text-center">
         Total a pagar:{" "}
         <span className="text-indigo-700 font-black">
           {formatCurrency(totalOrder)}
         </span>
       </p>
+
+      <form action={handleCreateOrder} className="w-full mt-10 space-y-5">
+        <input
+          type="text"
+          name="name"
+          id=""
+          placeholder="Tu nombre"
+          className="p-2 border rounded-lg w-full"
+        />
+        <input
+          type="number"
+          name="phone"
+          id=""
+          placeholder="Tu telefóno"
+          className="p-2 border rounded-lg w-full"
+        />
+
+        <input
+          type="submit"
+          value="confirmar pedido"
+          className="text-center font-xl text-white bg-black p-3 rounded-lg w-full uppercase cursor-pointer font-bold"
+        />
+      </form>
     </aside>
   );
 };
