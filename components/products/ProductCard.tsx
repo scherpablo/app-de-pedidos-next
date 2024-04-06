@@ -8,7 +8,6 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  
   return (
     <div className="border rounded-lg bg-white">
       <Image
@@ -20,13 +19,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
         className="rounded-t-lg md:w-[100%] md:h-auto"
       />
       <div className="p-5">
-        <h3 className="text-2xl font-bold">{product.name}</h3>
+        <h3
+          className="text-2xl font-bold overflow-hidden whitespace-nowrap overflow-ellipsis 
+        cursor-pointer hover:whitespace-normal hover:overflow-visible"
+        >
+          {product.name}
+        </h3>
         <p className="mt-5 font-black text-4xl text-amber-500">
           {formatCurrency(product.price)}
         </p>
-        <AddToOrderButton
-          product={product}
-        />
+        <AddToOrderButton product={product} />
       </div>
     </div>
   );
