@@ -11,13 +11,15 @@ const OrderSidebar = async () => {
 
   return (
     <aside className="md:w-72 md:h-screen bg-white">
-      <Image
-        width={150}
-        height={150}
-        src={`/logo.svg`}
-        alt="Imagen Logo"
-        className="my-5 mx-auto"
-      />
+      <div className="w-40 h-40 relative my-0 mx-auto">
+        <Image
+          // width={150}
+          // height={150}
+          fill
+          src={`/logo.svg`}
+          alt="Imagen Logo"
+        />
+      </div>
 
       <nav className="cursor-pointer">
         {categories.map((category) => (
