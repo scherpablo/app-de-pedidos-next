@@ -1,7 +1,6 @@
 "use server"
 
 import { orderSchema } from "@/src/schema"
-import { error } from "console"
 
 const createOrder = async (data: unknown)=>{
     const result = orderSchema.safeParse(data)

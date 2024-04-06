@@ -19,6 +19,8 @@ const OrderSummary = () => {
     const data = {
       name: formData.get("name"),
       phone: formData.get("phone"),
+      totalOrder,
+      order
     };
 
     const result = orderSchema.safeParse(data);
@@ -26,6 +28,7 @@ const OrderSummary = () => {
       result.error.issues.forEach((issue) => {
         toast.error(issue.message);
       });
+      return
     }
 
     const response = await createOrder(data);
