@@ -5,16 +5,16 @@ import { Product } from "@prisma/client";
 interface Store {
   order: OrderItem[];
   addToOrder: (product: Product) => void;
-  increaseQuantity: (id: Product['id']) => void;
-  decreaseQuantity: (id: Product['id']) => void;
-  deleteItem: (id: Product['id']) => void;
+  increaseQuantity: (id: Product["id"]) => void;
+  decreaseQuantity: (id: Product["id"]) => void;
+  deleteItem: (id: Product["id"]) => void;
+  clearOrder: () => void;
 }
 
 const useStore = create<Store>((set, get) => ({
   order: [],
 
   addToOrder: (product) => {
-
     const { categoryId, image, ...data } = product;
 
     let order: OrderItem[] = [];
@@ -44,32 +44,46 @@ const useStore = create<Store>((set, get) => ({
       order,
     }));
   },
-  
+
   increaseQuantity: (id) => {
     set((state) => ({
-        order: state.order.map(item => item.id === id ? {
-            ...item,
-            quantity: item.quantity + 1,
-            subtotal: item.price * (item.quantity + 1),
-        } : item)
-    }))
+      order: state.order.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              subtotal: item.price * (item.quantity + 1),
+            }
+          : item
+      ),
+    }));
   },
 
   decreaseQuantity: (id) => {
     set((state) => ({
-        order: state.order.map(item => item.id === id ? {
-            ...item,
-            quantity: Math.max(item.quantity - 1, 1),
-            subtotal: item.price * Math.max(item.quantity - 1, 1),
-        } : item)
-    }))
+      order: state.order.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: Math.max(item.quantity - 1, 1),
+              subtotal: item.price * Math.max(item.quantity - 1, 1),
+            }
+          : item
+      ),
+    }));
   },
 
   deleteItem: (id) => {
     set((state) => ({
-        order: state.order.filter(item => item.id !== id)
-    })) 
-  }
+      order: state.order.filter((item) => item.id !== id),
+    }));
+  },
+
+  clearOrder: () => {
+    set(() => ({
+      order: [],
+    }));
+  },
 }));
 
 export default useStore;

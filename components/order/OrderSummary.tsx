@@ -2,14 +2,19 @@
 
 import useStore from "@/src/store";
 import ProductDetail from "./ProductDetail";
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import { toast } from "react-toastify";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/cerate-order-action";
 import { orderSchema } from "@/src/schema";
 
 const OrderSummary = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+  });
   const order = useStore((state) => state.order);
+  const clearOrder = useStore((state) => state.clearOrder);
   const totalOrder = useMemo(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
     [order]
@@ -20,7 +25,7 @@ const OrderSummary = () => {
       name: formData.get("name"),
       phone: formData.get("phone"),
       totalOrder,
-      order
+      order,
     };
 
     const result = orderSchema.safeParse(data);
@@ -28,7 +33,7 @@ const OrderSummary = () => {
       result.error.issues.forEach((issue) => {
         toast.error(issue.message);
       });
-      return
+      return;
     }
 
     const response = await createOrder(data);
@@ -36,7 +41,19 @@ const OrderSummary = () => {
       response.errors.forEach((issue) => {
         toast.error(issue.message);
       });
+    } else {
+      toast.success("Pedido realizado correctamente");
+      clearOrder();
+      setFormData({ name: "", phone: "" });
     }
+  };
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -66,14 +83,16 @@ const OrderSummary = () => {
         <input
           type="text"
           name="name"
-          id=""
+          value={formData.name}
+          onChange={handleChange}
           placeholder="Tu nombre"
           className="p-2 border rounded-lg w-full"
         />
         <input
           type="number"
           name="phone"
-          id=""
+          value={formData.phone}
+          onChange={handleChange}
           placeholder="Tu telefóno"
           className="p-2 border rounded-lg w-full"
         />
