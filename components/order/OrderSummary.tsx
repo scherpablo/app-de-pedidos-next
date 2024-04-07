@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { formatCurrency } from "@/src/utils";
 import { createOrder } from "@/actions/cerate-order-action";
 import { orderSchema } from "@/src/schema";
+import Title from "../ui/Title";
+import Heading from "../ui/Heading";
 
 const OrderSummary = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +50,7 @@ const OrderSummary = () => {
     }
   };
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -58,12 +60,10 @@ const OrderSummary = () => {
 
   return (
     <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
-      <h1 className="text-4xl text-center font-black">Mi Pedido</h1>
+      <Title>Mi Pedido</Title>
 
       {order.length === 0 ? (
-        <p className="text-2xl font-semibold text-center mt-5">
-          El pedido esata vacio
-        </p>
+        <Heading>El pedido esata vacio</Heading>
       ) : (
         <div className="mt-5">
           {order.map((item) => (

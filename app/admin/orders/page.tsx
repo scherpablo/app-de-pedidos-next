@@ -1,8 +1,11 @@
+import Heading from "@/components/ui/Heading";
+import Title from "@/components/ui/Title";
+
 const OrderPage = () => {
   return (
     <>
-      <div>OrderPage</div>
-      <h1>desde OrderPage admin/orders</h1>
+      <Title>Panel de Administrador</Title>
+      <Heading>Administrar Pedidos</Heading>
     </>
   );
 };
