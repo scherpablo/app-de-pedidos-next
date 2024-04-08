@@ -4,7 +4,7 @@ import Title from "@/components/ui/Title";
 const OrderPage = () => {
   return (
     <>
-      <Title>Panel de Administrador</Title>
+      <Title>Panel de Administración Pedidos</Title>
       <Heading>Administrar Pedidos</Heading>
     </>
   );

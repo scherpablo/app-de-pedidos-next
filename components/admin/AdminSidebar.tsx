@@ -1,7 +1,8 @@
 import Logo from "../ui/Logo";
+import AdminRoute from "./AdminRoute";
 
 const adminNavigation = [
-  { url: "/admin/orders", text: "Pedídos", blank: false },
+  { url: "/admin/orders", text: "Pedidos", blank: false },
   { url: "/admin/products", text: "Productos", blank: false },
   { url: "/order/cafes", text: "Ver Kiosco", blank: true },
 ];
@@ -15,7 +16,12 @@ const AdminSidebar = () => {
           Navegación
         </p>
         <nav className="flex flex-col">
-          <h1>desde admin sidebar</h1>
+          { adminNavigation.map(link => (
+            <AdminRoute 
+            key={link.url}
+            link={link}
+            />
+          )) }
         </nav>
       </div>
     </>
