@@ -15,4 +15,8 @@ const orderSchema = z.object({
   ),
 });
 
-export { orderSchema };
+const searchSchema = z.object({
+  search: z.string().trim().min(1, "El campo no puede estar vacio"),
+});
+
+export { orderSchema, searchSchema };
