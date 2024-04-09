@@ -17,7 +17,7 @@ const FormProductSearch = () => {
       });
       return
     }
-    redirect(`/admin/products/search?search=${result.data.search}`)
+    redirect(`/admin/products/search?search=${ result.data.search }`)
   };
 
   return (
