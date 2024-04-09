@@ -40,12 +40,14 @@ const ProductsPage = async ({
     totalProductsData,
   ]);
 
+  const totalPages = Math.ceil(totalProducts / pageSize);
+
   return (
     <>
       <Title>Panel de Administración Productos</Title>
       <Heading>Adminstrar Productos</Heading>
       <ProductsTable products={products} />
-      <ProductsPagination page={page} />
+      <ProductsPagination page={page} totalPages={totalPages}/>
     </>
   );
 };
