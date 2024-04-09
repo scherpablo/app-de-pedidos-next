@@ -1,9 +1,11 @@
+import { redirect } from "next/navigation";
+import { prisma } from "@/src/lib/prisma";
+import ButtonCreateProduct from "@/components/admin/ButtonCreateProduct";
 import ProductsPagination from "@/components/admin/ProductsPagination";
 import ProductsTable from "@/components/admin/ProductsTable";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
-import { prisma } from "@/src/lib/prisma";
-import { redirect } from "next/navigation";
+import FormProductSearch from "@/components/admin/FormProductSearch";
 
 const productCount = async () => {
   return await prisma.product.count();
@@ -42,7 +44,7 @@ const ProductsPage = async ({
     productsData,
     totalProductsData,
   ]);
-  
+
   const totalPages = Math.ceil(totalProducts / pageSize);
 
   if (page > totalPages) redirect("/admin/products");
@@ -51,6 +53,10 @@ const ProductsPage = async ({
     <>
       <Title>Panel de Administración Productos</Title>
       <Heading>Adminstrar Productos</Heading>
+      <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
+        <ButtonCreateProduct />
+        <FormProductSearch />
+      </div>
       <ProductsTable products={products} />
       <ProductsPagination page={page} totalPages={totalPages} />
     </>
