@@ -1,7 +1,12 @@
+import ProductsPagination from "@/components/admin/ProductsPagination";
 import ProductsTable from "@/components/admin/ProductsTable";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
 import { prisma } from "@/src/lib/prisma";
+
+const productCount = async () => {
+  return await prisma.product.count();
+};
 
 const getProducts = async (page: number, pageSize: number) => {
   const skip = (page - 1) * pageSize;
@@ -27,13 +32,20 @@ const ProductsPage = async ({
   const page = +searchParams.page || 1; //El + convierte el string a number
   const pageSize = 10;
 
-  const products = await getProducts(page, pageSize);
+  const productsData = getProducts(page, pageSize);
+  const totalProductsData = productCount();
+
+  const [products, totalProducts] = await Promise.all([
+    productsData,
+    totalProductsData,
+  ]);
 
   return (
     <>
       <Title>Panel de Administración Productos</Title>
       <Heading>Adminstrar Productos</Heading>
       <ProductsTable products={products} />
+      <ProductsPagination page={page} />
     </>
   );
 };
