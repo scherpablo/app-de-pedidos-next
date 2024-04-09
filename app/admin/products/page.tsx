@@ -4,10 +4,16 @@ import Title from "@/components/ui/Title";
 import { prisma } from "@/src/lib/prisma";
 
 const getProducts = async () => {
-  const products = await prisma.product.findMany();
+  const products = await prisma.product.findMany({
+    include: {
+      category: true,
+    },
+  });
 
   return products;
 };
+
+export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>>
 
 const ProductsPage = async () => {
   const products = await getProducts();
@@ -20,4 +26,5 @@ const ProductsPage = async () => {
     </>
   );
 };
+
 export default ProductsPage;
