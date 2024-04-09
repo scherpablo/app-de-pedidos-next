@@ -51,7 +51,7 @@ const ProductsPage = async ({
 
   return (
     <>
-      <Title>Panel de Administración Productos</Title>
+      <Title>Panel de Administración - Productos</Title>
       <Heading>Adminstrar Productos</Heading>
       <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
         <ButtonCreateProduct />

@@ -24,7 +24,7 @@ const OrderPage = async () => {
 
   return (
     <>
-      <Title>Panel de Administración Pedidos</Title>
+      <Title>Panel de Administración - Pedidos</Title>
       <Heading>Administrar Pedidos</Heading>
 
       {orders.length ? (

@@ -29,7 +29,7 @@ const SearchPage = async ({
 
   return (
     <>
-      <Title>Panel de Administración Búsqueda</Title>
+      <Title>Panel de Administración - Búsqueda</Title>
       <Heading>
         Resultados de búsqueda para:{" "}
         <span className="font-bold uppercase">{searchParams.search}</span>
