@@ -1,10 +1,10 @@
 import { prisma } from "@/src/lib/prisma";
 import { notFound } from "next/navigation";
-import { FormEditProduct } from "@/components/admin/FormEditProduct";
 import FormProduct from "@/components/admin/FormProduct";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
 import ButtonGoBackProduct from "@/components/admin/ButtonGoBackProduct";
+import FormEditProduct from "@/components/admin/FormEditProduct";
 
 const getProductById = async (id: number) => {
   const product = await prisma.product.findUnique({

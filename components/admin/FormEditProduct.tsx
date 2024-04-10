@@ -1,15 +1,22 @@
 "use client";
 
 import React from "react";
-import { productSchema } from "@/src/schema";
 import { toast } from "react-toastify";
+import { useParams, useRouter } from "next/navigation";
+import { productSchema } from "@/src/schema";
+import { updateProduct } from "@/actions/update-product-action";
 
-export const FormEditProduct = ({ children }: { children: React.ReactNode }) => {
+const FormEditProduct = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+  const params = useParams();
+  const id = +params.id!
+
   const handleSubmit = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
       price: formData.get("price"),
       categoryId: formData.get("categoryId"),
+      image: formData.get("image"),
     };
     const result = productSchema.safeParse(data);
     if (!result.success) {
@@ -18,6 +25,15 @@ export const FormEditProduct = ({ children }: { children: React.ReactNode }) => 
       });
       return;
     }
+    const response = await updateProduct(result.data, id);
+    if (response?.errors) {
+      response.errors.forEach((issue) => {
+        toast.error(issue.message);
+      });
+      return;
+    }
+    toast.success("Producto actualizado correctamente");
+    router.push("/admin/products");
   };
 
   return (
@@ -36,3 +52,5 @@ export const FormEditProduct = ({ children }: { children: React.ReactNode }) => 
     </>
   );
 };
+
+export default FormEditProduct;
