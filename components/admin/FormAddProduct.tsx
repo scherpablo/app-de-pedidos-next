@@ -3,13 +3,17 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { productSchema } from "@/src/schema";
+import { createProduct } from "@/actions/create-product-action";
+import { useRouter } from "next/navigation";
 
 const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
   const handleSubmit = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
       price: formData.get("price"),
       categoryId: formData.get("categoryId"),
+      image: formData.get("image"),
     };
     const result = productSchema.safeParse(data);
     if (!result.success) {
@@ -18,7 +22,15 @@ const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
       });
       return;
     }
-    console.log(result.data)
+    const response = await createProduct(result.data);
+    if (response?.errors) {
+      response.errors.forEach((issue) => {
+        toast.error(issue.message);
+      });
+      return;
+    }
+    toast.success("Producto agregado correctamente");
+    router.push("/admin/products");
   };
 
   return (
