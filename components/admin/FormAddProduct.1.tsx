@@ -1,10 +1,8 @@
 "use client";
-
-import React from "react";
-import { toast } from "react-toastify";
 import { productSchema } from "@/src/schema";
+import React from "react";
 
-const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
+export const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
   const handleSubmit = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
@@ -18,7 +16,6 @@ const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
       });
       return;
     }
-    console.log(result.data)
   };
 
   return (
@@ -37,5 +34,3 @@ const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
     </>
   );
 };
-
-export default FormAddProduct;

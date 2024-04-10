@@ -19,4 +19,23 @@ const searchSchema = z.object({
   search: z.string().trim().min(1, "El campo no puede estar vacio"),
 });
 
-export { orderSchema, searchSchema };
+const productSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, { message: "El Nombre del Producto no puede ir vacio" }),
+  price: z
+    .string()
+    .trim()
+    .transform((value) => parseFloat(value))
+    .refine((value) => value > 0, { message: "Precio no válido" })
+    .or(z.number().min(1, { message: "La Categoría es Obligatoria" })),
+  categoryId: z
+    .string()
+    .trim()
+    .transform((value) => parseInt(value))
+    .refine((value) => value > 0, { message: "La Categoría es Obligatoria" })
+    .or(z.number().min(1, { message: "La Categoría es Obligatoria" })),
+});
+
+export { orderSchema, searchSchema, productSchema };

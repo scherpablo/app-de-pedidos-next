@@ -1,4 +1,5 @@
 import FormAddProduct from "@/components/admin/FormAddProduct";
+import FormProduct from "@/components/admin/FormProduct";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
 
@@ -7,7 +8,9 @@ const NewProductsPage = () => {
     <>
       <Title>Panel de Administrtador - Nuevo Producto</Title>
       <Heading>Agrega tus Productos</Heading>
-      <FormAddProduct />
+      <FormAddProduct>
+        <FormProduct />
+      </FormAddProduct>
     </>
   );
 };
