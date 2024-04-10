@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div className="flex flex-col justify-center items-center h-screen">
         <Logo />
-        <div className="flex flex-col mx-auto p-10 lg:w-1/4">
+        <div className="flex flex-col mx-auto p-10 w-full md:w-1/3">
           {adminNavigation.map((link) => (
             <Link
               href={link.url}
