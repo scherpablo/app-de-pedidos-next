@@ -4,7 +4,7 @@ import React from "react";
 import { productSchema } from "@/src/schema";
 import { toast } from "react-toastify";
 
-export const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
+export const FormEditProduct = ({ children }: { children: React.ReactNode }) => {
   const handleSubmit = async (formData: FormData) => {
     const data = {
       name: formData.get("name"),
@@ -28,7 +28,7 @@ export const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
 
           <input
             type="submit"
-            value="agregar producto"
+            value="guardar cambios"
             className="bg-indigo-600 hover:bg-indigo-800 uppercase text-white w-full p-3 rounded-lg font-bold cursor-pointer mt-5"
           />
         </form>
