@@ -4,6 +4,7 @@ import { FormEditProduct } from "@/components/admin/FormEditProduct";
 import FormProduct from "@/components/admin/FormProduct";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
+import ButtonGoBackProduct from "@/components/admin/ButtonGoBackProduct";
 
 const getProductById = async (id: number) => {
   const product = await prisma.product.findUnique({
@@ -19,7 +20,6 @@ const getProductById = async (id: number) => {
 
 const page = async ({ params }: { params: { id: string } }) => {
   const product = await getProductById(+params.id);
-  console.log(product);
 
   return (
     <>
@@ -28,6 +28,9 @@ const page = async ({ params }: { params: { id: string } }) => {
       <FormEditProduct>
         <FormProduct product={product} />
       </FormEditProduct>
+      <div className="flex flex-col lg:flex-row lg:justify-center gap-5 mt-10">
+        <ButtonGoBackProduct />
+      </div>
     </>
   );
 };

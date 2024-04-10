@@ -1,3 +1,4 @@
+import ButtonGoBackProduct from "@/components/admin/ButtonGoBackProduct";
 import FormAddProduct from "@/components/admin/FormAddProduct";
 import FormProduct from "@/components/admin/FormProduct";
 import Heading from "@/components/ui/Heading";
@@ -11,6 +12,9 @@ const NewProductsPage = () => {
       <FormAddProduct>
         <FormProduct />
       </FormAddProduct>
+      <div className="flex flex-col lg:flex-row lg:justify-center gap-5 mt-10">
+        <ButtonGoBackProduct />
+      </div>
     </>
   );
 };
