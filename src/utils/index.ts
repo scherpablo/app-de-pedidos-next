@@ -5,4 +5,15 @@ const formatCurrency = (amount: number) => {
   }).format(amount);
 };
 
-export { formatCurrency };
+const getImagePath = (imagePath: string) => {
+  const cloudinaryBaseUrl = "https://res.cloudinary.com";
+  const publicBaseUrl = `/products/${imagePath}.jpg`;
+
+  if (imagePath.startsWith(cloudinaryBaseUrl)) {
+    return imagePath;
+  } else {
+    return publicBaseUrl;
+  }
+};
+
+export { formatCurrency, getImagePath };
