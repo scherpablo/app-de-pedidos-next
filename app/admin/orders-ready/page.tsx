@@ -3,11 +3,9 @@
 import useSWR from "swr";
 import { OrderWithProducts } from "@/src/types";
 import Heading from "@/components/ui/Heading";
-import Logo from "@/components/ui/Logo";
 import Title from "@/components/ui/Title";
 import Spinner from "@/components/ui/Spinner";
 import OrdrerItemList from "@/components/order/OrdrerItemList";
-import Link from "next/link";
 
 const OrdersPage = () => {
   const url = "/admin/orders-ready/api";
