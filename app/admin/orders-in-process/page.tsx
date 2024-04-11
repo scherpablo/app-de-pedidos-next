@@ -1,4 +1,3 @@
-
 "use client";
 
 import useSWR from "swr";
@@ -9,7 +8,7 @@ import Title from "@/components/ui/Title";
 import Spinner from "@/components/ui/Spinner";
 
 const OrderPage = () => {
-  const url = "/admin/orders/api";
+  const url = "/admin/orders-in-process/api";
   const fetcher = () =>
     fetch(url)
       .then((res) => res.json())

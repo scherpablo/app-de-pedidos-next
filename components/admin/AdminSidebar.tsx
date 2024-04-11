@@ -3,8 +3,9 @@ import Logo from "../ui/Logo";
 import AdminRoute from "./AdminRoute";
 
 const adminNavigation = [
-  { url: "/admin/orders", text: "Pedidos", blank: false },
-  { url: "/admin/products", text: "Productos", blank: false },
+  { url: "/admin/products-list", text: "Listado Productos", blank: false },
+  { url: "/admin/orders-in-process", text: "Pedidos Recibidos", blank: false },
+  { url: "/admin/orders-ready", text: "Pedidos Listos", blank: false },
   { url: "/order/cafes", text: "Ver Kiosco", blank: true },
 ];
 

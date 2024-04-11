@@ -6,12 +6,11 @@ import Heading from "@/components/ui/Heading";
 import Logo from "@/components/ui/Logo";
 import Title from "@/components/ui/Title";
 import Spinner from "@/components/ui/Spinner";
-import { DiVim } from "react-icons/di";
 import OrdrerItemList from "@/components/order/OrdrerItemList";
 import Link from "next/link";
 
 const OrdersPage = () => {
-  const url = "/orders/api";
+  const url = "/admin/orders-ready/api";
   const fetcher = () =>
     fetch(url)
       .then((res) => res.json())
@@ -28,23 +27,23 @@ const OrdersPage = () => {
   if (data)
     return (
       <>
-        <div className="my-5">
-          <Title>Panel de Administración - Pedidos</Title>
-          <Heading>Pedidos Listos</Heading>
+        <Title>Panel de Administración - Pedidos</Title>
+        <Heading>Pedidos Listos</Heading>
+        {/* <div className="flex justify-center">
           <Link href="/" className="-mt-10">
             <Logo />
           </Link>
+        </div> */}
 
-          {data.length ? (
-            <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-10">
-              {data.map((order) => (
-                <OrdrerItemList key={order.id} order={order} />
-              ))}
-            </div>
-          ) : (
-            <p>No hay pedidos listos</p>
-          )}
-        </div>
+        {data.length ? (
+          <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-10">
+            {data.map((order) => (
+              <OrdrerItemList key={order.id} order={order} />
+            ))}
+          </div>
+        ) : (
+          <p>No hay pedidos listos</p>
+        )}
       </>
     );
 };
