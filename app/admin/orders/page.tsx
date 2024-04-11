@@ -4,19 +4,7 @@ import Title from "@/components/ui/Title";
 import { prisma } from "@/src/lib/prisma";
 
 const getPendingOrders = async () => {
-  const orders = await prisma.order.findMany({
-    where: {
-      status: false,
-    },
-    include: {
-      orderProducts: {
-        include: {
-          product: true,
-        },
-      },
-    },
-  });
-  return orders;
+  
 };
 
 const OrderPage = async () => {
