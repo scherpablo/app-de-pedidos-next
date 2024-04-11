@@ -26,7 +26,7 @@ const OrderPage = () => {
     return (
       <>
         <Title>Panel de Administración - Pedidos</Title>
-        <Heading>Administrar Pedidos</Heading>
+        <Heading>Pedidos en Proceso</Heading>
 
         {data.length ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-5 mt-5">

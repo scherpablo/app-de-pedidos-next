@@ -28,7 +28,7 @@ const OrdersPage = () => {
     return (
       <>
         <Title>Panel de Administración - Pedidos</Title>
-        <Heading>Pedidos Listos</Heading>
+        <Heading>Pedidos Terminados</Heading>
         {/* <div className="flex justify-center">
           <Link href="/" className="-mt-10">
             <Logo />
