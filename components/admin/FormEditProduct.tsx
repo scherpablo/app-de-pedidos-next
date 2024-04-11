@@ -33,7 +33,7 @@ const FormEditProduct = ({ children }: { children: React.ReactNode }) => {
       return;
     }
     toast.success("Producto actualizado correctamente");
-    router.push("/admin/products");
+    router.push("/admin/products-list");
   };
 
   return (

@@ -35,7 +35,7 @@ const ProductsPage = async ({
   const page = +searchParams.page || 1; //El + convierte el string a number
   const pageSize = 10;
 
-  if (page < 0) redirect("/admin/products");
+  if (page < 0) redirect("/admin/products-list");
 
   const productsData = getProducts(page, pageSize);
   const totalProductsData = productCount();
@@ -47,7 +47,7 @@ const ProductsPage = async ({
 
   const totalPages = Math.ceil(totalProducts / pageSize);
 
-  if (page > totalPages) redirect("/admin/products");
+  if (page > totalPages) redirect("/admin/products-list");
 
   return (
     <>

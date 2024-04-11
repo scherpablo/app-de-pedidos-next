@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+const userSchema = z.object({
+  username: z.string().min(1, "El usuario es obligatorio"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+});
+
 const orderSchema = z.object({
   name: z.string().min(3, "El nombre es obligatorio"),
   phone: z.string().min(1, "El teléfono es oblgatorio"),
@@ -39,4 +44,4 @@ const productSchema = z.object({
   image: z.string().min(1, { message: "La imagen es obligatoria" }),
 });
 
-export { orderSchema, searchSchema, productSchema };
+export { userSchema, orderSchema, searchSchema, productSchema };

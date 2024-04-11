@@ -30,7 +30,7 @@ const FormAddProduct = ({ children }: { children: React.ReactNode }) => {
       return;
     }
     toast.success("Producto agregado correctamente");
-    router.push("/admin/products");
+    router.push("/admin/products-list");
   };
 
   return (

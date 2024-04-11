@@ -3,7 +3,6 @@ import Logo from "@/components/ui/Logo";
 import FormSessionAdmin from "@/components/ui/FormSessionAdmin";
 
 const adminNavigation = [
-  // { url: "/admin/orders", text: "Pedidos", blank: false },
   { url: "/order/cafes", text: "Ingresar al Kiosco", blank: true },
 ];
 
@@ -25,7 +24,7 @@ export default function Home() {
             </Link>
           ))}
           <p className="mt-20 text-2xl text-center font-semibold">
-            Llena el formulario para iniciar sesión como Administrador
+            Iniciar Sesión como Administrador
           </p>
 
           <FormSessionAdmin />
