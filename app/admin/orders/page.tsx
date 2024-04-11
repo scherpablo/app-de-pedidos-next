@@ -1,33 +1,43 @@
+"use client";
+
+import useSWR from "swr";
+import { OrderWithProducts } from "@/src/types";
 import OrderCard from "@/components/order/OrderCard";
 import Heading from "@/components/ui/Heading";
 import Title from "@/components/ui/Title";
-import { prisma } from "@/src/lib/prisma";
+import Spinner from "@/components/ui/Spinner";
 
-const getPendingOrders = async () => {
-  
-};
+const OrderPage = () => {
+  const url = "/admin/orders/api";
+  const fetcher = () =>
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => data);
+  const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
+    refreshInterval: 60000,
+    revalidateOnFocus: false,
+  });
 
-const OrderPage = async () => {
-  const orders = await getPendingOrders();
+  if (isLoading) return <Spinner />;
 
-  return (
-    <>
-      <Title>Panel de Administración - Pedidos</Title>
-      <Heading>Administrar Pedidos</Heading>
+  if (error) return <p className="text-center">Error al cargar los datos</p>;
 
-      {orders.length ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-5 mt-5">
-          {orders.map((order) => (
-            <OrderCard 
-            key={order.id}
-            order={order}
-            />
-          ))}
-        </div>
-      ) : (
-        <p className="text-center">No hay pedidos pendientes</p>
-      )}
-    </>
-  );
+  if (data)
+    return (
+      <>
+        <Title>Panel de Administración - Pedidos</Title>
+        <Heading>Administrar Pedidos</Heading>
+
+        {data.length ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-5 mt-5">
+            {data.map((order) => (
+              <OrderCard key={order.id} order={order} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center">No hay pedidos pendientes</p>
+        )}
+      </>
+    );
 };
 export default OrderPage;
