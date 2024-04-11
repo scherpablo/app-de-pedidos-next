@@ -2,6 +2,7 @@ import { prisma } from "@/src/lib/prisma";
 import CategoryIcon from "../ui/CategoryIcon";
 import Image from "next/image";
 import Logo from "../ui/Logo";
+import Link from "next/link";
 
 async function getCategories() {
   return await prisma.category.findMany();
@@ -12,7 +13,9 @@ const OrderSidebar = async () => {
 
   return (
     <aside className="md:w-72 md:h-screen bg-white">
-      <Logo />
+      <Link href="/">
+        <Logo />
+      </Link>
 
       <nav className="cursor-pointer">
         {categories.map((category) => (

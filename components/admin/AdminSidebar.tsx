@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Logo from "../ui/Logo";
 import AdminRoute from "./AdminRoute";
 
@@ -11,17 +12,16 @@ const AdminSidebar = () => {
   return (
     <>
       <div className="space-y-3">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
         <p className="mt-10 uppercase font-bold text-sm text-gray-600 text-center">
           Navegación
         </p>
         <nav className="flex flex-col">
-          { adminNavigation.map(link => (
-            <AdminRoute 
-            key={link.url}
-            link={link}
-            />
-          )) }
+          {adminNavigation.map((link) => (
+            <AdminRoute key={link.url} link={link} />
+          ))}
         </nav>
       </div>
     </>

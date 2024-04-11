@@ -7,11 +7,11 @@ type OrderItemListProps = {
 const OrdrerItemList = ({ order }: OrderItemListProps) => {
   return (
     <div className="bg-white shadow-lg p-5 rounded-lg flex flex-col">
-      <div className="flex justify-between py-6">
-        <p className="font-bold text-lg">
+      <div className="flex justify-between py-6 text-xl">
+        <p className="font-bold">
           Cliente: <span className="text-indigo-600">{order.name}</span>
         </p>
-        <p className="font-bold text-lg">
+        <p className="font-bold">
           Teléfono: <span className="text-indigo-600">{order.phone}</span>
         </p>
       </div>

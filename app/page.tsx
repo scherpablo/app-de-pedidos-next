@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col justify-center items-center h-screen">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
         <div className="flex flex-col mx-auto p-10 w-full md:w-1/3">
           {adminNavigation.map((link) => (
             <Link

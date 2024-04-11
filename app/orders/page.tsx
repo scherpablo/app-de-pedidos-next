@@ -8,6 +8,7 @@ import Title from "@/components/ui/Title";
 import Spinner from "@/components/ui/Spinner";
 import { DiVim } from "react-icons/di";
 import OrdrerItemList from "@/components/order/OrdrerItemList";
+import Link from "next/link";
 
 const OrdersPage = () => {
   const url = "/orders/api";
@@ -30,14 +31,14 @@ const OrdersPage = () => {
         <div className="my-5">
           <Title>Panel de Administración - Pedidos</Title>
           <Heading>Pedidos Listos</Heading>
-          <div className="-mt-10">
+          <Link href="/" className="-mt-10">
             <Logo />
-          </div>
+          </Link>
 
           {data.length ? (
-            <div className="grid grid-cols-1 gap-5 max-w-5xl mx-auto mt-10">
+            <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-10">
               {data.map((order) => (
-                <OrdrerItemList key={order.id} order={order}/>
+                <OrdrerItemList key={order.id} order={order} />
               ))}
             </div>
           ) : (
