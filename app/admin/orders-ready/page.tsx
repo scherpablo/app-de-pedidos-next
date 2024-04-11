@@ -29,11 +29,6 @@ const OrdersPage = () => {
       <>
         <Title>Panel de Administración - Pedidos</Title>
         <Heading>Pedidos Terminados</Heading>
-        {/* <div className="flex justify-center">
-          <Link href="/" className="-mt-10">
-            <Logo />
-          </Link>
-        </div> */}
 
         {data.length ? (
           <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto mt-10">
