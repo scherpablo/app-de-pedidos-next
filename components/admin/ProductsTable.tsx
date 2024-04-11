@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formatCurrency } from "@/src/utils";
-import { ProductsWithCategory } from "@/app/admin/products/page";
+import { ProductsWithCategory } from "@/app/admin/products-list/page";
 
 type ProductsTableProps = {
   products: ProductsWithCategory
