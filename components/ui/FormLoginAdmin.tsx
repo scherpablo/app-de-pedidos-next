@@ -28,9 +28,9 @@ const FormLoginAdmin = () => {
         showConfirmButton: false,
         timer: 2000,
       });
-    } else {
-      router.push("/admin/products-list");
+      return
     }
+    router.push("/admin/products-list");
   };
 
   return (
