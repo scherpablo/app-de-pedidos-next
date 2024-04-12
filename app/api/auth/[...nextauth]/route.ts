@@ -18,7 +18,6 @@ const authOptions = {
             }
         })
         if(!userFound) return null
-        console.log(userFound)
 
         return {
             id: userFound.id.toString(),
