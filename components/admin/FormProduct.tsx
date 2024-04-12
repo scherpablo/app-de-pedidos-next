@@ -1,6 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
-import ImageUpload from "./ImageUpload";
 import { Product } from "@prisma/client";
+import ImageUpload from "./ImageUpload";
 
 const getCategories = async () => {
   return await prisma.category.findMany();
