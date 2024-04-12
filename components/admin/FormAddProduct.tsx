@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { toast } from "react-toastify";
 import { productSchema } from "@/src/schema";
 import { createProduct } from "@/actions/create-product-action";
