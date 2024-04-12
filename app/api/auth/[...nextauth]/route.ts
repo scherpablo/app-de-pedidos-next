@@ -3,6 +3,8 @@ import NextAuth from "next-auth/next";
 import CredentialsProviders from "next-auth/providers/credentials";
 import { prisma } from "@/src/lib/prisma";
 
+export const dynamic = "force-dynamic"
+
 const authOptions = {
   providers: [
     CredentialsProviders({
