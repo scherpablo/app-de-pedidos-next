@@ -19,7 +19,7 @@ const authOptions = {
                 username: credentials?.username
             }
         })
-        if(!userFound) return null
+        if(!userFound) throw new Error("Usuario no encontrado")
 
         return {
             id: userFound.id.toString(),
