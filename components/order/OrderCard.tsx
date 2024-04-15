@@ -13,11 +13,22 @@ const OrderCard = ({ order }: OrderCardProps) => {
         aria-labelledby="summary-heading"
         className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4 shadow-lg"
       >
-        <p className="text-2xl font-bold">
-          Cliente: <span className="font-semibold">{order.name}</span>
+        <p className="text-2xl font-black text-indigo-600">
+          Cliente:{" "}
+          <span className="font-semibold italic text-black text-xl">
+            {order.name}
+          </span>
         </p>
-        <p className="text-lg font-semibold">Detalle del Pedido:</p>
-        <dl className="mt-6 space-y-4">
+        <p className="text-2xl font-black text-indigo-600">
+          Teléfono:{" "}
+          <span className="font-semibold italic text-black text-xl">
+            {order.phone}
+          </span>
+        </p>
+        <p className="text-lg font-black uppercase italic">
+          Detalle del Pedido:
+        </p>
+        <dl className="space-y-4 bg-gray-200 p-3 rounded-lg">
           {order.orderProducts.map((product) => (
             <div
               key={product.productId}
