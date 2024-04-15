@@ -24,10 +24,10 @@ const OrdrerItemList = ({ order }: OrderItemListProps) => {
             {order.phone}
           </span>
         </p>
-        <p className="text-lg font-black uppercase italic">
+        <p className="text-lg font-black uppercase">
           Detalle del Pedido:
         </p>
-        <dl className="space-y-4 bg-gray-200 p-3 rounded-lg">
+        <dl className="space-y-4 bg-gray-100 p-3 rounded-lg">
           {order.orderProducts.map((product) => (
             <div
               key={product.productId}
@@ -42,7 +42,7 @@ const OrdrerItemList = ({ order }: OrderItemListProps) => {
             </div>
           ))}
           <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-            <dt className="font-semibold text-lg">Total Abonado: </dt>
+            <dt className="font-black text-xl text-amber-500">Total Abonado: </dt>
             <dd className="text-xl font-bold">{formatCurrency(order.total)}</dd>
           </div>
         </dl>
